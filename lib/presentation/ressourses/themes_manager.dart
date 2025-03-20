@@ -24,7 +24,7 @@ ThemeData getApplicationTheme() {
         color: ColorManager.primary,
         elevation: 0,
         titleTextStyle:
-            getTextstyle(AppFontsize.s20, FontWhightmanager.bold, Colors.black),
+            getTextStyleTitle(AppFontsize.s20, FontWhightmanager.bold, Colors.black),
       ),
 
       // Button theme
@@ -47,12 +47,12 @@ ThemeData getApplicationTheme() {
         contentPadding: EdgeInsets.all(PaddingManger.p8),
 
         //hintstyle
-        hintStyle: getTextstyle(
+        hintStyle: getTextStylelongtext(
             AppFontsize.s12, FontWhightmanager.regualar, ColorManager.grey),
 
         // label style
 
-        labelStyle: getTextstyle(
+        labelStyle: getTextStylesubetitle(
             AppFontsize.s12, FontWhightmanager.regualar, Colors.black),
 
         // the border style

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_next_evel/presentation/ressourses/assets_manager.dart';
 import 'package:flutter_next_evel/presentation/ressourses/color_manager.dart';
 import 'package:flutter_next_evel/presentation/ressourses/routes_manager.dart';
-import 'package:flutter_next_evel/presentation/ressourses/values_manager.dart';
 
 class SplaschView extends StatefulWidget {
   const SplaschView({super.key});
@@ -26,6 +25,8 @@ class _SplaschViewState extends State<SplaschView> {
  _goNext() {
     Navigator.pushReplacementNamed(context, Routes.OnboadingRoutes);
   }
+
+  // this for start timing
   @override
   void initState() {
     super.initState();
