@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_next_evel/presentation/forgetpassword/forgetpassword_view.dart';
 import 'package:flutter_next_evel/presentation/login/login_view.dart';
 import 'package:flutter_next_evel/presentation/main/main_view.dart';
-import 'package:flutter_next_evel/presentation/onboarding/onboarding_view.dart';
+import 'package:flutter_next_evel/presentation/onboarding/view/onboarding_view.dart';
 import 'package:flutter_next_evel/presentation/register/register_view.dart';
 import 'package:flutter_next_evel/presentation/ressourses/string_manager.dart';
 import 'package:flutter_next_evel/presentation/splasch/splasch_view.dart';

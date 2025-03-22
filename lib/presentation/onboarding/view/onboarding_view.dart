@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_next_evel/data/onboardingdata/onboarding_data.dart';
-import 'package:flutter_next_evel/presentation/onboarding/onboardingpage.dart';
+import 'package:flutter_next_evel/domain/modeles.dart';
+import 'package:flutter_next_evel/presentation/onboarding/viewmodel/onhoarding_viewmodel.dart';
 import 'package:flutter_next_evel/presentation/ressourses/color_manager.dart';
 import 'package:flutter_next_evel/presentation/ressourses/font_manager.dart';
 import 'package:flutter_next_evel/presentation/ressourses/routes_manager.dart';
@@ -18,20 +18,32 @@ class OnboardingView extends StatefulWidget {
 
 class _OnboardingViewState extends State<OnboardingView> {
   final PageController _pageController = PageController();
-  int _currentPageIndex = 0;
+  OnhoardingViewmodel _viewmodel = OnhoardingViewmodel();
+  
 
-  void _updatePageIndex(int newIndex) {
-    setState(() {
-      _currentPageIndex = newIndex;
-    });
-
-    Future.delayed(Duration(milliseconds: 10), () {
-      setState(() {});
-    });
+  _bind(){
+    _viewmodel.start();
   }
 
   @override
+  void initState() {
+    _bind();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
+    return StreamBuilder<SliderViewobject>(
+      stream: _viewmodel.outputSliderViewobject, 
+      builder: (context,snapshot){
+        return _getContentWidget(snapshot.data);
+      }
+    );
+  }
+
+  Widget _getContentWidget(SliderViewobject? data){
+    if(data == null) return SizedBox.shrink();
+    else{
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorManager.white,
@@ -40,14 +52,13 @@ class _OnboardingViewState extends State<OnboardingView> {
       backgroundColor: ColorManager.white,
       body: PageView.builder(
         controller: _pageController,
-        itemCount: OnboardingDataList.length,
-        onPageChanged: (value) => _updatePageIndex(value),
+        itemCount: data.nbrOfSliders,
+        onPageChanged: (value) => _viewmodel.onPagechnged(value),
         itemBuilder: (context, index) {
-          return Onboardingpage(OnboardingDataList[index]);
+          return getPageSlider(data.sliderobject);
         },
       ),
       bottomSheet: Container(
-        color: ColorManager.darkSecond,
         height: Appsize.a80,
         child: Column(
           children: [
@@ -67,14 +78,38 @@ class _OnboardingViewState extends State<OnboardingView> {
                 ),
               ),
             ),
-            _getbottomSheet()
+            _getbottomSheet(data.currentIndex,data.nbrOfSliders),
           ],
         ),
       ),
     );
+  }}
+
+   Widget getPageSlider(OnboardingSliderData _onboardingData) {
+     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        SizedBox(height: PaddingManger.p34,),
+        
+        Padding(
+          padding: const EdgeInsets.all(PaddingManger.p12),
+          child: Text(_onboardingData.title,style: getTextStyleTitle(AppFontsize.s16, FontWhightmanager.medium, ColorManager.darkGrey),),
+        ),
+        SizedBox(height: 20,),
+        Padding(
+          padding: const EdgeInsets.all(PaddingManger.p12),
+          child: Text(_onboardingData.subtitle,style: getTextStylelongtext(AppFontsize.s12, FontWhightmanager.regualar, ColorManager.darkGrey),),
+        ),
+        SizedBox(height: 20,),
+
+        
+        Image.asset(_onboardingData.image),
+        
+      ],
+    );
   }
 
-  Widget _getbottomSheet() {
+  Widget _getbottomSheet(int _currentPageIndex,lengthElement) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -90,7 +125,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                 );
               }
               else{
-                child: Icon(Icons.arrow_back_ios, color: ColorManager.black);
+              Icon(Icons.arrow_back_ios, color: ColorManager.black);
               }
             },
             child: Icon(Icons.arrow_back_ios, color: ColorManager.black),
@@ -98,10 +133,10 @@ class _OnboardingViewState extends State<OnboardingView> {
         ),
 
         Row(
-          children: List.generate(OnboardingDataList.length, (index) {
+          children: List.generate(lengthElement, (index) {
             return Padding(
               padding: EdgeInsets.all(PaddingManger.p8),
-              child: IsthisPage(index),
+              child: IsthisPage(index,_currentPageIndex),
             );
           }),
         ),
@@ -111,7 +146,7 @@ class _OnboardingViewState extends State<OnboardingView> {
           padding: EdgeInsets.all(PaddingManger.p12),
           child: GestureDetector(
             onTap: () {
-              if (_currentPageIndex < OnboardingDataList.length - 1) {
+              if (_currentPageIndex < lengthElement - 1) {
                 _pageController.nextPage(
                   duration: Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
@@ -127,7 +162,7 @@ class _OnboardingViewState extends State<OnboardingView> {
     );
   }
 
-  Widget IsthisPage(int index) {
+  Widget IsthisPage(int index,_currentPageIndex) {
     return AnimatedSwitcher(
       duration: Duration(milliseconds: 300),
       child: Container(
