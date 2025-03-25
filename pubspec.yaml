@@ -30,6 +30,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  retrofit: ^4.4.2
+  analyzer: ^7.3.0
+  dio: ^5.8.0+1
+  json_serializable: ^6.9.4
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -40,6 +45,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  retrofit_generator: ^9.1.9
+  build_runner: ^2.4.15
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

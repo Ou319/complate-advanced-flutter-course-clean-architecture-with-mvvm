@@ -8,7 +8,7 @@ import 'package:flutter_next_evel/presentation/ressourses/string_manager.dart';
 class OnhoardingViewmodel extends Baseviewmodel implements OnhoardingViewmodelInputs , OnhoardingViewmodelOutputs{
   StreamController _streamController=StreamController<SliderViewobject>();
   int _currentPageIndex = 0;
-  late final List<OnboardingSliderData> _onboardingDataList;//List<OnboardingSliderData> OnboardingDataList
+  late final List<OnboardingSliderData> _onboardingDataList; //List<OnboardingSliderData> OnboardingDataList
 
   @override
   void dispose() {
@@ -56,9 +56,9 @@ class OnhoardingViewmodel extends Baseviewmodel implements OnhoardingViewmodelIn
   void _postdataview(){
     inputSliderViewobject.add(
       SliderViewobject(
-        sliderobject: _onboardingDataList[_currentPageIndex],
-        nbrOfSliders: _onboardingDataList.length,
-        currentIndex: _currentPageIndex,
+         sliderobject: _onboardingDataList[_currentPageIndex],
+         nbrOfSliders: _onboardingDataList.length,
+         currentIndex: _currentPageIndex,
       )
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_next_evel/data/onboardingdata/onboarding_data.dart';
 import 'package:flutter_next_evel/domain/modeles.dart';
 import 'package:flutter_next_evel/presentation/onboarding/viewmodel/onhoarding_viewmodel.dart';
 import 'package:flutter_next_evel/presentation/ressourses/color_manager.dart';
@@ -27,6 +26,7 @@ class _OnboardingViewState extends State<OnboardingView> {
 
   @override
   void initState() {
+    super.initState();
     _bind();
   }
 
