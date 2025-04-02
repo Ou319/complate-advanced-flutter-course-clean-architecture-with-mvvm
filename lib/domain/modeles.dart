@@ -18,3 +18,7 @@ class SliderViewobject {
     required this.currentIndex,
   });
 }
+
+
+
+//login modeles

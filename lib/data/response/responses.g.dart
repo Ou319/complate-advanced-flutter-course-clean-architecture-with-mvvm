@@ -6,11 +6,10 @@ part of 'responses.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) {
-  return BaseResponse()
-    ..status = json['status'] as int?
-    ..message = json['message'] as String?;
-}
+BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) => BaseResponse(
+      status: (json['status'] as num?)?.toInt(),
+      message: json['message'] as String?,
+    );
 
 Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
     <String, dynamic>{
@@ -18,12 +17,12 @@ Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
       'message': instance.message,
     };
 
-CustomoreResponse _$CustomoreResponseFromJson(Map<String, dynamic> json) {
-  return CustomoreResponse()
-    ..id = json['id'] as int?
-    ..name = json['name'] as String?
-    ..numberOfnotification = json['numberOfnotification'] as int?;
-}
+CustomoreResponse _$CustomoreResponseFromJson(Map<String, dynamic> json) =>
+    CustomoreResponse(
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String?,
+      numberOfnotification: (json['numberOfnotification'] as num?)?.toInt(),
+    );
 
 Map<String, dynamic> _$CustomoreResponseToJson(CustomoreResponse instance) =>
     <String, dynamic>{
@@ -32,12 +31,12 @@ Map<String, dynamic> _$CustomoreResponseToJson(CustomoreResponse instance) =>
       'numberOfnotification': instance.numberOfnotification,
     };
 
-ContactsResponse _$ContactsResponseFromJson(Map<String, dynamic> json) {
-  return ContactsResponse()
-    ..phone = json['phone'] as int?
-    ..email = json['email'] as String?
-    ..link = json['link'] as String?;
-}
+ContactsResponse _$ContactsResponseFromJson(Map<String, dynamic> json) =>
+    ContactsResponse(
+      phone: (json['phone'] as num?)?.toInt(),
+      email: json['email'] as String?,
+      link: json['link'] as String?,
+    );
 
 Map<String, dynamic> _$ContactsResponseToJson(ContactsResponse instance) =>
     <String, dynamic>{
@@ -47,18 +46,18 @@ Map<String, dynamic> _$ContactsResponseToJson(ContactsResponse instance) =>
     };
 
 AuthenticationResponse _$AuthenticationResponseFromJson(
-    Map<String, dynamic> json) {
-  return AuthenticationResponse(
-    json['contacts'] == null
-        ? null
-        : ContactsResponse.fromJson(json['contacts'] as Map<String, dynamic>),
-    json['customore'] == null
-        ? null
-        : CustomoreResponse.fromJson(json['customore'] as Map<String, dynamic>),
-  )
-    ..status = json['status'] as int?
-    ..message = json['message'] as String?;
-}
+        Map<String, dynamic> json) =>
+    AuthenticationResponse(
+      customore: json['customore'] == null
+          ? null
+          : CustomoreResponse.fromJson(
+              json['customore'] as Map<String, dynamic>),
+      contacts: json['contacts'] == null
+          ? null
+          : ContactsResponse.fromJson(json['contacts'] as Map<String, dynamic>),
+    )
+      ..status = (json['status'] as num?)?.toInt()
+      ..message = json['message'] as String?;
 
 Map<String, dynamic> _$AuthenticationResponseToJson(
         AuthenticationResponse instance) =>

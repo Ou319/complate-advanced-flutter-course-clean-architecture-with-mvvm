@@ -1,17 +1,17 @@
-
 import 'package:dio/dio.dart';
 import 'package:flutter_next_evel/app/constant.dart';
 import 'package:flutter_next_evel/data/response/responses.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'app_api.g.dart';
+
 @RestApi(baseUrl: Constant.Apikey)
-abstract class AppserviseClient{
+abstract class AppServiceClient { // Fixed typo in class name
+  factory AppServiceClient(Dio dio, {String baseUrl}) = _AppServiceClient;
 
-  factory AppserviseClient(Dio dio, {String baseUrl}) = _AppserviseClient;  
-  @POST("/customore/login")
-
+  @POST("customers/login") // Fixed typo in endpoint
   Future<AuthenticationResponse> login(
-    @Field("email") String email,@Field("password") String password
+    @Field("email") String email,
+    @Field("password") String password,
   );
 }
