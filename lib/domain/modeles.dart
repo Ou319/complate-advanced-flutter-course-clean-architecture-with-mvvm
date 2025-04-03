@@ -1,3 +1,5 @@
+import 'dart:async';
+
 class OnboardingSliderData {
   String title;
   String subtitle;
@@ -22,3 +24,23 @@ class SliderViewobject {
 
 
 //login modeles
+class Customore{
+  String id;
+  String name;
+  int numberOfnotification;
+  Customore(this.id, this.name, this.numberOfnotification);
+}
+
+class Contacts{
+  int phone;
+  String email;
+  String link;
+
+  Contacts(this.phone, this.email, this.link);
+}
+
+class Authentication{
+  Customore customore;
+  Contacts contacts;
+Authentication(this.customore, this.contacts);
+}
