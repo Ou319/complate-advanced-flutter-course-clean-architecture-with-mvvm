@@ -25,7 +25,7 @@ class BaseResponse {
 @JsonSerializable()
 class CustomoreResponse {
   @JsonKey(name:"id")
-  int? id;
+  String? id;
   @JsonKey(name:"name")
   String? name;
   @JsonKey(name:"numberOfnotification")

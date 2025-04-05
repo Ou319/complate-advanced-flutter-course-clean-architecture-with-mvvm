@@ -42,6 +42,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   google_fonts: ^6.2.1
   dartz: ^0.10.1
+  either_dart: ^1.0.0
+  internet_connection_checker: ^3.0.1
+  pretty_dio_logger: ^1.4.0
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
