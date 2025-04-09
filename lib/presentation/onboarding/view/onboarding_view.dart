@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_next_evel/domain/modeles.dart';
+import 'package:flutter_next_evel/domain/modele/modeles.dart';
 import 'package:flutter_next_evel/presentation/onboarding/viewmodel/onhoarding_viewmodel.dart';
 import 'package:flutter_next_evel/presentation/ressourses/color_manager.dart';
 import 'package:flutter_next_evel/presentation/ressourses/font_manager.dart';

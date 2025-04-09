@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter_next_evel/domain/modeles.dart';
+import 'package:flutter_next_evel/domain/modele/modeles.dart';
 import 'package:flutter_next_evel/presentation/base/baseviewmodel.dart';
 import 'package:flutter_next_evel/presentation/ressourses/assets_manager.dart';
 import 'package:flutter_next_evel/presentation/ressourses/string_manager.dart';
@@ -47,7 +47,7 @@ class OnhoardingViewmodel extends Baseviewmodel implements OnhoardingViewmodelIn
   
   @override
   Sink get inputSliderViewobject => _streamController.sink;
-  
+    
   @override
   Stream<SliderViewobject> get outputSliderViewobject => _streamController.stream.map((event)=>event);
   

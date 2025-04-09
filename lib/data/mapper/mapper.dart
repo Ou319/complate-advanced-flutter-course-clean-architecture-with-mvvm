@@ -1,6 +1,6 @@
 import 'package:flutter_next_evel/app/extentions.dart';
 import 'package:flutter_next_evel/data/response/responses.dart';
-import 'package:flutter_next_evel/domain/modeles.dart';
+import 'package:flutter_next_evel/domain/modele/modeles.dart';
 
 extension CustomoreResponseMapper on CustomoreResponse {
   Customore toDomain() {

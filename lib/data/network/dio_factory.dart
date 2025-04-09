@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_next_evel/app/app_refes.dart';
 import 'package:flutter_next_evel/app/constant.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -12,16 +13,21 @@ const String DEFAULT_LANGUAGE = "language";
 
 
 class DioFactory {
+
+  final AppPreference _appPreference;
+   DioFactory(this._appPreference);
   Future<Dio> getDio() async{
+
     Dio dio = Dio();
     
     int _timeout=60*1000;
 
+    String langague =  await _appPreference.getApplangague();
     Map<String,String> headers ={
       CONTENT_TYPE:APPLICATION_JSON,
       ACCEPT: APPLICATION_JSON,
       AUTHORISATION: "send token here",
-      DEFAULT_LANGUAGE: "en"
+      DEFAULT_LANGUAGE: langague,
     };
     dio.options=BaseOptions(
       baseUrl: Constant.Apikey,
