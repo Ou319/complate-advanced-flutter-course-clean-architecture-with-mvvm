@@ -15,4 +15,14 @@ class AppString{
   //skip text
   static const String skip = "Skip";
 
+  //login text
+  static const String username = "Username";
+  static const String password = "Password";
+  static const String login = "Login";
+  static const String forgetpassword = "Forget Password?";
+  static const String notMember = "Not member ?Sign up";
+  static const String usernameErrore = "Please enter you'r username";
+  static const String passwordErrore = "Please enter you'r password";
+  
+
 }
