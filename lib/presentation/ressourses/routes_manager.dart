@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_next_evel/app/di.dart';
 import 'package:flutter_next_evel/presentation/forgetpassword/forgetpassword_view.dart';
 import 'package:flutter_next_evel/presentation/login/view/login_view.dart';
 import 'package:flutter_next_evel/presentation/main/main_view.dart';
@@ -26,6 +27,7 @@ class Routgenarator {
       case Routes.OnboadingRoutes:
         return MaterialPageRoute(builder: (_) => const OnboardingView());
       case Routes.loginRoutes:
+        initLoginmodule();
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.registerRoutes:
         return MaterialPageRoute(builder: (_) => const RegisterView());

@@ -23,6 +23,12 @@ class AppString{
   static const String notMember = "Not member ?Sign up";
   static const String usernameErrore = "Please enter you'r username";
   static const String passwordErrore = "Please enter you'r password";
+
+
+  static const String loading = "loading...";
+  static const String reload = "reload";
+  static const String ok = "ok";
+  static const String empty = "";
   
 
 }

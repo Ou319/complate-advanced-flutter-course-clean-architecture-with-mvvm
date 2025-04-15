@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_next_evel/app/di.dart';
+import 'package:flutter_next_evel/data/data_source/remote_data_source.dart';
+import 'package:flutter_next_evel/data/repository/repository_imp.dart';
+import 'package:flutter_next_evel/domain/repository/reposetory.dart';
+import 'package:flutter_next_evel/domain/usecase/login_usecase.dart';
 import 'package:flutter_next_evel/presentation/login/viewmodel/loginviewmodel.dart';
 import 'package:flutter_next_evel/presentation/ressourses/assets_manager.dart';
 import 'package:flutter_next_evel/presentation/ressourses/color_manager.dart';
@@ -17,7 +22,9 @@ class _LoginViewState extends State<LoginView> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  Loginviewmodel _viewmodel = Loginviewmodel();
+
+
+  Loginviewmodel _viewmodel = instance<Loginviewmodel>();
 
   _bind() {
     _viewmodel.start();
@@ -126,7 +133,7 @@ class _LoginViewState extends State<LoginView> {
                       children: [
                         GestureDetector(
                           onTap: (){
-                            Navigator.pushReplacementNamed(context, Routes.forgetPasswordRoutes);
+                            Navigator.pushNamed(context, Routes.forgetPasswordRoutes);
                           },
                           child: Text(
                             AppString.forgetpassword,
@@ -137,7 +144,7 @@ class _LoginViewState extends State<LoginView> {
                         ),
                         GestureDetector(
                           onTap: (){
-                            Navigator.pushReplacementNamed(context, Routes.registerRoutes);
+                            Navigator.pushNamed(context, Routes.registerRoutes);
                           },
                           child: Text(
                             AppString.notMember,
